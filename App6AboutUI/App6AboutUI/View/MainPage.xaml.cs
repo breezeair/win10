@@ -26,5 +26,12 @@ namespace App6AboutUI.View
         {
             this.InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //((Frame)Window.Current.Content).Navigate(typeof(View.Page1));
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.Page1), true);
+        }
     }
 }
