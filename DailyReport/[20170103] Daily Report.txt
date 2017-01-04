@@ -1,0 +1,33 @@
+1.     Tasks:
+·       Learning XAML common controls
+
+·       Learning navigation, layout, command elements in XAML
+
+·       Reviewing dependency property knowledge points.
+
+ 
+2.     Learning Points:
+
+·              the usage of XAML common controls
+·              how to design and apply styles to controls
+·              make clear the meaning of Navigation, Command elements and Content elements, so as to Layout 
+·              the usage of templates and resources
+
+
+3.     Questions:
+·      How to use Frames in XAML pages. 
+·      The difference and relation about theme and style in XAML.
+
+ 
+4.     Arrangement next day
+
+·       Learning the knowledge of style, controls, patterns, inputs and usability.
+
+ 
+5.     Problems summary, how to improve
+
+·       There is a lot of knowledge to learn, I should not  spend too much time on code practicing of some knowledge points. 
+
+·       It may take much time to modify the codes to adjust the UI.  Avoid not to be too immersed in a knowledge point.  Find help from the official sample code if possible.
+
+·       Previously learned knowledge points need to be reviewed from time to time and applied in code for depth understanding.
