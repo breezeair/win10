@@ -6,8 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
-    
+
+    <Page.Resources>
+        <local:ScenarioBindingConverter x:Key="ScenarioConverter"></local:ScenarioBindingConverter>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.RowDefinitions>
@@ -36,18 +38,17 @@
                  VerticalAlignment="Top" RelativePanel.Below="SampleTitle" Margin="0,10,0,0" RelativePanel.Above="FooterPanel">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="aaaaaaaaaaa"/>
+                                <TextBlock Text="{Binding Converter={StaticResource ScenarioConverter}}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                        </ListBox>
+                    </ListBox>
                         <StackPanel x:Name="FooterPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True">
                         <Image Source="Assets/microsoft-sdk.png" AutomationProperties.Name="Microsoft Logo" Stretch="None" HorizontalAlignment="Left" Margin="10,0,0,0"/>
                         <TextBlock x:Name="Copyright" Text="&#xA9; All rights reserved." Style="{StaticResource CopyrightTextStyle}"
                                    RelativePanel.Above="LinksPanel" Margin="10,10,0,0"
                                    TextWrapping="Wrap"/>
                         <StackPanel x:Name="LinksPanel" Orientation="Horizontal" Margin="10,10,0,10">
-                            <HyperlinkButton Content="github" Tag="http://www.github.com"
-                        Click="Footer_Click" FontSize="12" Style="{StaticResource HyperlinkStyle}" /> 
+                            <HyperlinkButton Content="github" Tag="http://www.github.com" Click="Footer_Click" FontSize="12" Style="{StaticResource HyperlinkStyle}" /> 
                             <TextBlock Text="|"  Style="{StaticResource SeparatorStyle}" VerticalAlignment="Center" />
                             <HyperlinkButton x:Name="BingLink" Content="bing" Tag="http://cn.bing.com" Click="Footer_Click" FontSize="12" Style="{StaticResource HyperlinkStyle}"/> 
                         </StackPanel>

@@ -17,9 +17,7 @@
             <RowDefinition Height="40" ></RowDefinition>
             <RowDefinition Height="40" ></RowDefinition>
             <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
+
         </Grid.RowDefinitions>
 
         <TextBlock Text="Catalog" Margin="4" Grid.Row="0" />

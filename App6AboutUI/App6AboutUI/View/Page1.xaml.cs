@@ -27,17 +27,22 @@ namespace App6AboutUI.View
     {
         //set up in configuration cs.
         public const string FEATURE_NAME = "SystemBack";
+        public static Page1 Current;
 
-        //List<Scenario> scenarios = new List<Scenario>
-        //{
-        //    new Scenario() { Title="Subscribe to the BackRequested event", ClassType=typeof(Scenario1)},
-        //};
+        List<Scenario> scenarios = new List<Scenario>
+        {
+            new Scenario() { Title="SelectionChanged event 1", ClassType=typeof(Scenario1)},
+            new Scenario() { Title="SelectionChanged event 2", ClassType=typeof(SecondaryPage)},
+        };
         //set up in configuration cs.
 
         public Page1()
         {
 
             this.InitializeComponent();
+            Current = this;
+            SampleTitle.Text = FEATURE_NAME;
+            this.NavigationCacheMode = NavigationCacheMode.Required;
 
 
         }
@@ -71,6 +76,24 @@ namespace App6AboutUI.View
 
             ContentDialogResult result = await noWifiDialog.ShowAsync();
         }*/
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // Populate the scenario list from the SampleConfiguration.cs file
+            ScenarioControl.ItemsSource = scenarios;
+            if (Window.Current.Bounds.Width < 640)
+            {
+                ScenarioControl.SelectedIndex = -1;
+            }
+            else
+            {
+                ScenarioControl.SelectedIndex = 0;
+            }
+
+            // This page is always at the top of our in-app back stack.
+            // Once it is reached there is no further back so we can always disable the title bar back UI when navigated here.
+            // If you want to you can always to the Frame.CanGoBack check for all your pages and act accordingly.
+            //SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+        }
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -85,10 +108,17 @@ namespace App6AboutUI.View
         private void ScenarioControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Clear the status block when navigating scenarios.
-           /* NotifyUser(String.Empty, NotifyType.StatusMessage);
 
             ListBox scenarioListBox = sender as ListBox;
             Scenario s = scenarioListBox.SelectedItem as Scenario;
+            if(scenarioListBox.SelectedIndex == 0)
+            {
+                NotifyUser("aaaaaa", NotifyType.StatusMessage);
+            }
+            else
+            {
+                NotifyUser("bbbbbbbb", NotifyType.ErrorMessage);
+            }
             if (s != null)
             {
                 ScenarioFrame.Navigate(s.ClassType);
@@ -96,7 +126,34 @@ namespace App6AboutUI.View
                 {
                     Splitter.IsPaneOpen = false;
                 }
-            }*/
+            }
+        }
+
+        public void NotifyUser(string strMessage, NotifyType type)
+        {
+            switch (type)
+            {
+                case NotifyType.StatusMessage:
+                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Green);
+                    break;
+                case NotifyType.ErrorMessage:
+                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Red);
+                    break;
+            }
+            StatusBlock.Text = strMessage;
+
+            // Collapse the StatusBlock if it has no text to conserve real estate.
+            StatusBorder.Visibility = (StatusBlock.Text != String.Empty) ? Visibility.Visible : Visibility.Collapsed;
+            //if (StatusBlock.Text != String.Empty)
+            //{
+                StatusBorder.Visibility = Visibility.Visible;
+                StatusPanel.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    StatusBorder.Visibility = Visibility.Collapsed;
+            //    StatusPanel.Visibility = Visibility.Collapsed;
+            //}
         }
 
         public List<Scenario> Scenarios
@@ -105,11 +162,29 @@ namespace App6AboutUI.View
         }
     }
 
+    public enum NotifyType
+    {
+        StatusMessage,
+        ErrorMessage
+    };
+
     public class Scenario
     {
         public string Title { get; set; }
         public Type ClassType { get; set; }
     }
 
+    public class ScenarioBindingConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            Scenario s = value as Scenario;
+            return (Page1.Current.Scenarios.IndexOf(s) + 1) + ") " + s.Title;
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            return true;
+        }
+    }
 }
