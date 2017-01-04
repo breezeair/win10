@@ -20,9 +20,9 @@
 
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Catalog" Margin="4" Grid.Row="0" />
-        <TextBlock Text="Navigation:  backbutton" Margin="4" Grid.Row="1" />
+        <TextBlock Text="MainPage" Margin="4" Grid.Row="0" />
+        <TextBlock Text="Navigation:  AppViewBackButton" Margin="1" Grid.Row="1" />
 
-        <Button Content="aaaaaaaa" Margin="4" Grid.Row="10" Click="Button_Click" />
+        <Button Content="Navigation" Margin="0" Grid.Row="2" Click="Button_Click" />
     </Grid>
 </Page>
