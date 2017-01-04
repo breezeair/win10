@@ -10,8 +10,21 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Content="aaaaaaaa" Margin="5" Grid.Row="0" Click="Button_Click" />
+        <TextBlock Text="Catalog" Margin="4" Grid.Row="0" />
+        <TextBlock Text="Navigation:  backbutton" Margin="4" Grid.Row="1" />
+
+        <Button Content="aaaaaaaa" Margin="4" Grid.Row="10" Click="Button_Click" />
     </Grid>
 </Page>

@@ -7,12 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderBrush="blue" BorderThickness="12" Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
+            <RowDefinition Height="40" ></RowDefinition>
         </Grid.RowDefinitions>
+        <Border Background="#2f5cb6"/>
 
-        <TextBlock Text="Page1" Margin="5" Grid.Row="0"  />
+        <TextBlock x:ConnectionId='1' Text="Page1" Padding="4" Grid.Row="0"  Name="name" />
+        <Button x:ConnectionId='2' Content="www" Padding="4" Grid.Row="1"                      />
+        <Button x:ConnectionId='3' Content="www" Padding="4" Grid.Row="2"                         />
+
     </Grid>
 </Page>
 

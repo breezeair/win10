@@ -76,11 +76,16 @@ namespace App6AboutUI
                     rootFrame.Navigate(typeof(View.MainPage), e.Arguments);
                 }
                 //
-                SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+                //SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
 
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+
+            //Navigation: backbutton
+            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += BackRequested;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : Windows.UI.Core.AppViewBackButtonVisibility.Collapsed;
+            rootFrame.Navigated += OnNavigated;
         }
 
         /// <summary>
@@ -107,7 +112,7 @@ namespace App6AboutUI
             deferral.Complete();
         }
 
-        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        /*private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame == null)
@@ -119,6 +124,25 @@ namespace App6AboutUI
                 e.Handled = true;
                 rootFrame.GoBack();
             }
+        }*/
+
+        private void OnNavigated(object sender, NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ((Frame)sender).CanGoBack ?
+                AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
+
+        private void BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+            if (rootFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
+        }
+        //backpress button
     }
 }
