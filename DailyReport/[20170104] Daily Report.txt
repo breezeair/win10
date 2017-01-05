@@ -1,29 +1,32 @@
-1.     Tasks:
-·       Learning XAML common controls
+﻿1.     Tasks:
 
-·       Learning navigation, layout, command elements in XAML
-
-·       Reviewing dependency property knowledge points.
+·       Apply the knowledge points about UI in my App.
+·       Try to understand how to write motions.
 
  
 2.     Learning Points:
 
-·              the usage of XAML common controls
-·              how to design and apply styles to controls
-·              make clear the meaning of Navigation, Command elements and Content elements, so as to Layout 
-·              the usage of templates and resources
+·      the usage of XAML common controls
+·      how to design and apply styles to controls
+·      make clear the meaning of Navigation, Command elements and Content elements, so as to Layout 
+·      the usage of templates and resources
 
 
 3.     Questions:
-·      How to use Frames in XAML pages. 
-·      The difference and relation about theme and style in XAML.
+
+·      I write a style for button as samples. But it doesn't work and report errors. I'm looking for the root cause.
+·      What the NavigationCacheMode affects.
 
  
 4.     Arrangement next day
 
-·       Learning the knowledge of style, controls, patterns, inputs and usability.
+·      Learning the knowledge of style, controls, patterns, inputs and usability.
 
  
 5.     Problems summary, how to improve
 
-·       style目前只会用和修改，不会写
+·      Up to now, I am nearly clear about the construction of styles and can modify most of them on demand. But I can not write styles all by myself.
+·      I have browsed the knowledge points about layout, style, controls and patterns in MSDN. But less than half of the extensive or detailed points provided through links alternate with articles. I only remember part of them.
+·      Part of the knowledge points about UI Which I have viewed have not been applied in my code practicing. 
+·      All these problems need persistent efforts.
+·      Now I'm also blind to the animation and motion. I need to get tips from the samples and blend and ask for help.

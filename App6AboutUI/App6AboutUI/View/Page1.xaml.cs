@@ -113,11 +113,11 @@ namespace App6AboutUI.View
             Scenario s = scenarioListBox.SelectedItem as Scenario;
             if(scenarioListBox.SelectedIndex == 0)
             {
-                NotifyUser("aaaaaa", NotifyType.StatusMessage);
+                NotifyUser("statusaaaaaa", NotifyType.StatusMessage);
             }
             else
             {
-                NotifyUser("bbbbbbbb", NotifyType.ErrorMessage);
+                NotifyUser("statusbbbbbbbb", NotifyType.ErrorMessage);
             }
             if (s != null)
             {

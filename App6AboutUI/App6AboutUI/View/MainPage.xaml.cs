@@ -25,6 +25,8 @@ namespace App6AboutUI.View
         public MainPage()
         {
             this.InitializeComponent();
+            Loaded += HubPage_Loaded;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -32,6 +34,28 @@ namespace App6AboutUI.View
             //((Frame)Window.Current.Content).Navigate(typeof(View.Page1));
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(View.Page1), true);
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            //((Frame)Window.Current.Content).Navigate(typeof(View.Page1));
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.Page2), true);
+        }
+
+        void HubPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> sections = new List<string>();
+
+            foreach (HubSection section in NewsHub.Sections)
+            {
+                if (section.Header != null)
+                {
+                    sections.Add(section.Header.ToString());
+                }
+            }
+
+            ZoomedOutList.ItemsSource = sections;
         }
     }
 }

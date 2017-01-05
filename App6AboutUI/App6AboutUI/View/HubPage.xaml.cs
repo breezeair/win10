@@ -20,24 +20,11 @@ namespace App6AboutUI.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page2 : Page
+    public sealed partial class HubPage : Page
     {
-
-        public Page2()
+        public HubPage()
         {
             this.InitializeComponent();
-        }
-        private void Rectangle_Tapped(object sender, PointerRoutedEventArgs e)
-        {
-            myStoryboard.Begin();
-        }
-
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (rectangleItems.Items.Count > 0)
-            {
-                rectangleItems.Items.RemoveAt(0);
-            }
         }
     }
 }

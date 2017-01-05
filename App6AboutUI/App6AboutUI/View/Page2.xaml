@@ -11,17 +11,52 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40" ></RowDefinition>
             <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
-            <RowDefinition Height="40" ></RowDefinition>
+
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+
         </Grid.RowDefinitions>
 
         <TextBlock Text="Page2" Margin="4" Grid.Row="0" />
+        <Button Content="Remove Rectangle" Click="RemoveButton_Click" Grid.Row="1"/>
+        <ItemsControl Grid.Row="2" x:Name="rectangleItems">
+            <ItemsControl.ItemContainerTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </ItemsControl.ItemContainerTransitions>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Height="400"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <!-- The sequence children appear depends on their order in 
+         the panel's children, not necessarily on where they render
+         on the screen. Be sure to arrange your child elements in
+         the order you want them to transition into view. -->
+            <ItemsControl.Items>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+            </ItemsControl.Items>
+        </ItemsControl>
+
+        <StackPanel Grid.Row="3">
+            <StackPanel.Resources>
+                <Storyboard x:Name="myStoryboard">
+                    <FadeOutThemeAnimation TargetName="myRectangle" />
+                </Storyboard>
+            </StackPanel.Resources>
+            <Rectangle PointerPressed="Rectangle_Tapped" x:Name="myRectangle"  
+              Fill="Blue" Width="200" Height="300"/>
+        </StackPanel>
+
     </Grid>
 </Page>
