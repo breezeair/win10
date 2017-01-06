@@ -7,9 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Storyboard x:Name="myStoryboard">
+            <DoubleAnimation
+              Storyboard.TargetName="MyAnimatedRectangle"
+              Storyboard.TargetProperty="Opacity"
+              From="1.0" To="0.0" Duration="0:0:10" />
+        </Storyboard>
+    </Page.Resources>
+    
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="87,76,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="87,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="87,140,0,0" TextWrapping="Wrap" Text="TextBlock1" VerticalAlignment="Top"/>
+        <Button x:Name="button2" Content="Button2" HorizontalAlignment="Left" Margin="87,221,0,0" VerticalAlignment="Top" Click="button2_Click"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="87,308,0,0" TextWrapping="Wrap" Text="TextBlock2" VerticalAlignment="Top"/>
+        <StackPanel x:Name="stackPanel1" HorizontalAlignment="Left" Height="100" Margin="87,372,0,0" VerticalAlignment="Top" Width="100"/>
+        <!-- Animates the rectangle's opacity. -->
+        
 
+        <Rectangle x:Name="MyAnimatedRectangle"
+      Width="300" Height="200" Fill="Blue" />
     </Grid>
 </Page>
