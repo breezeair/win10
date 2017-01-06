@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -15,35 +18,39 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace App6AboutUI.View
+namespace App4WithDataBind
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page2 : Page
+    public sealed partial class BindToFunctionPage : Page
     {
-
-        public Page2()
+        public BindToFunctionPage()
         {
             this.InitializeComponent();
-        }
-        private void Rectangle_Tapped(object sender, PointerRoutedEventArgs e)
-        {
-            myStoryboard.Begin();
+            this.hostVM = new HostViewModel();
+            //this.DataContext = new ChangeStringViewModel();
+            this.ChangeStringVM = new ChangeStringViewModel();
         }
 
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (rectangleItems.Items.Count > 0)
-            {
-                rectangleItems.Items.RemoveAt(0);
-            }
-        }
+        public HostViewModel hostVM { set; get; }
+
+        public ChangeStringViewModel ChangeStringVM { set; get; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(View.FilePage), true);
+            hostVM.NextText = "Another String!";
+            
         }
+
+        //ICommand ClickMeCommand { get; set; }
+
+
+
+        //string tList = new IList(tObjectStruct.ToList());
+
+        //ObservableCollection tObjectStruct = new ObservableCollection(tList);
     }
+
+
 }

@@ -1,3 +1,5 @@
 *.exe
 /App6AboutUI/App6AboutUI/bin
 /App6AboutUI/App6AboutUI/obj
+/App4WithDataBind/App4WithDataBind/bin
+/App4WithDataBind/App4WithDataBind/obj

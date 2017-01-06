@@ -1,0 +1,31 @@
+﻿1.     Tasks:
+
+·       Learing the knowledge about UI.
+·       Learing the knowledge about Files, folders, and libraries.
+
+ 
+2.     Learning Points:
+
+·      the usage of some controls
+·      the knowledge about animations
+·      the knowledge about Files, folders, and libraries
+·      the knowledge about Globalization and localization
+
+
+3.     Questions:
+
+·      I write a EntranceThemeTransition for button. But it doesn't work. So as ItemsControl.  Finding the root cause.
+·      Is the location of LocalFolder can be customerized?
+
+ 
+4.     Arrangement next day
+
+·      Learning the other knowledge about developing Windows apps.
+
+ 
+5.     Problems summary, how to improve
+
+·      Up to now, I am also familiar with part of the controls and patterns. I only have a general knowledge of the others.
+·      I have browsed the knowledge points about Files, folders, and libraries. But lack of the experience in applying them in code.
+·      I have not grasped the knowlege about Inputs and devices Usability. 
+·      I have viewed the basics about animations, but also know little about Storyboarded animations,Key-frame and easing function animations.

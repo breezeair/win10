@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="App6AboutUI.View.HubPage"
+    x:Class="App6AboutUI.View.FilePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:App6AboutUI.View"
@@ -8,6 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="87,76,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="87,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

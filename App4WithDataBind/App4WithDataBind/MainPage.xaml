@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="App4WithDataBind.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App4WithDataBind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="170"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <!--Binding to sigle item-->
+        <TextBlock Text="Binding to sigle item:" Margin="5" Grid.Row="0" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{x:Bind catalogVM.DefaultRecording.OneLineSummary}" Margin="5" Grid.Row="1"/>
+        <!--Binding to sigle item-->
+
+        <!-- Binding to a collection of items -->
+        <TextBlock Text="Binding to a collection of items:" Margin="10" Grid.Row="2" FontWeight="Bold"></TextBlock>
+        <ListView ItemsSource="{x:Bind catalogVM.Recordings}" Margin="10" Grid.Row="3">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:CatalogRecording">
+                    <TextBlock Text="{x:Bind OneLineSummary}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- Binding to a collection of items -->
+
+        <!-- Binding to a collection of items(another type of display) -->
+        <ListView  x:Name="recordingsListView" ItemsSource="{x:Bind catalogVM.Recordings}" Margin="5" Grid.Row="4">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:CatalogRecording">
+                    <StackPanel Orientation="Horizontal" Margin="7">
+                        <SymbolIcon Symbol="Mail" Margin="0,0,12,0"></SymbolIcon>
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind ArtistName}" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="{x:Bind CompositionName}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- Binding to a collection of items(another type of display) -->
+
+        <StackPanel DataContext="{Binding SelectedItem, ElementName=recordingsListView}"
+            Margin="0,24,0,0" Grid.Row="5">
+            <TextBlock Text="{Binding ArtistName}"/>
+            <TextBlock Text="{Binding CompositionName}"/>
+            <TextBlock Text="{Binding ReleaseDateTime}"/>
+        </StackPanel>
+
+        <!--x:Bind to a Button_Click Event-->
+        <Button x:Name="btn1" Click="{x:Bind Button_Click}"  Content="NewPage2" Grid.Row="6"></Button>
+        <Button x:Name="btn2" Click="{x:Bind Button_Click2}"  Content="NewPage3" Grid.Row="7"></Button>
+        <!--x:Bind to a Button_Click Event-->
+    </Grid>
+</Page>

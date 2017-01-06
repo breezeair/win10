@@ -18,11 +18,26 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Page2" Margin="4" Grid.Row="0" />
-        <Button Content="Remove Rectangle" Click="RemoveButton_Click" Grid.Row="1"/>
+        <Button Content="Remove Rectangle" Click="RemoveButton_Click" Grid.Row="1">
+            <Button.Transitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Button.Transitions>
+        </Button>
+        <Button Content="Navigation to FilePage"  Grid.Row="1" HorizontalAlignment="Right" Click="Button_Click">
+            <Button.Transitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Button.Transitions>
+        </Button>
+
         <ItemsControl Grid.Row="2" x:Name="rectangleItems">
             <ItemsControl.ItemContainerTransitions>
                 <TransitionCollection>
                     <EntranceThemeTransition/>
+                    <RepositionThemeTransition/>
                 </TransitionCollection>
             </ItemsControl.ItemContainerTransitions>
             <ItemsControl.ItemsPanel>

@@ -15,16 +15,18 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace App6AboutUI.View
+namespace App4WithDataBind
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HubPage : Page
+    public sealed partial class ConvertPage : Page
     {
-        public HubPage()
+        public ConvertPage()
         {
             this.InitializeComponent();
+            this.customerVM = new CustomerViewModel();
         }
+        public CustomerViewModel customerVM { set; get; }
     }
 }
