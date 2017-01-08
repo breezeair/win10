@@ -1,3 +1,38 @@
+1.     Tasks:
+
+·       Learing the knowledge about Files, folders, and libraries.
+·       Learing the knowledge about Launching, resuming, and background tasks.
+
+ 
+2.     Learning Points:
+
+·      the knowledge about Files, folders, and libraries
+·      the usage of some controls
+
+
+
+3.     Questions:
+
+·      I write a EntranceThemeTransition for button. But it doesn't work. So as ItemsControl.  Finding the root cause.
+·      Is the location of LocalFolder can be customerized?
+
+ 
+4.     Arrangement next day
+
+·      Learning the other knowledge about developing Windows apps.
+
+ 
+5.     Problems summary, how to improve
+
+·      Up to now, I am also familiar with part of the controls and patterns. I only have a general knowledge of the others.
+·      I have browsed the knowledge points about Files, folders, and libraries. But lack of the experience in applying them in code.
+·      I have not grasped the knowlege about Inputs and devices Usability. 
+·      I have viewed the basics about animations, but also know little about Storyboarded animations,Key-frame and easing function animations.
+
+
+
+
+
 1.If we want to dynamically modify  properties of some specified controls' child items, we can check the controls with the help of class VisualTreeHelper. For example, Three steps for changing the background of selected items in a Listview to red:
 1.Traversal search all the children of the ListView.
 2.Filter what meet the requirement.
