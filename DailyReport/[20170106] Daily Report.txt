@@ -1,0 +1,67 @@
+1.If we want to dynamically modify  properties of some specified controls' child items, we can check the controls with the help of class VisualTreeHelper. For example, Three steps for changing the background of selected items in a Listview to red:
+1.Traversal search all the children of the ListView.
+2.Filter what meet the requirement.
+3.Perform SolidColorBrush operations.
+
+The following is the implementation code:
+        public IEnumerable<T> FindChildren<T>(DependencyObject parent) where T : class
+        {
+            var count = VisualTreeHelper.GetChildrenCount(parent);
+            if (count > 0)
+            {
+                for (var i = 0; i < count; i++)
+                {
+                    var child = VisualTreeHelper.GetChild(parent, i);
+                    var t = child as T;
+                    if (t != null)
+                        yield return t;
+
+                    var children = FindChildren<T>(child);
+                    foreach (var item in children)
+                        yield return item;
+                }
+            }
+        }
+
+
+        IEnumerable<ListViewItem> AllItems = FindChildren<ListViewItem>(listView1);//得到所有的Buttons
+        int i = 0;
+        foreach (ListViewItem tn in AllItems)
+        {
+            i++;
+            if (tn.IsSelected)
+            {
+                tn.Background = new SolidColorBrush(Windows.UI.Colors.Red);
+            }
+        }
+
+2.If we want to add a customized behavior to a element, we can do like this:
+1.add Behavior SDK to the reference.
+2.add a class which inherit DependencyObject, IBehavior:
+public sealed class BtnGetFocusBehavior : DependencyObject, IBehavior
+{
+	public void Attach(DependencyObject associatedObject)
+	{
+		throw new NotImplementedException();
+	}
+	public void Detach()
+	{
+		throw new NotImplementedException();
+	}
+	public DependencyObject AssociatedObject { get; }
+}
+
+3.associate the behavior to the elements in XAML:
+
+xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+
+   <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+       
+        <Ellipse  Width="100" Height="100" Fill="#FF1E5FBD" RenderTransformOrigin="0.5,0.5" >
+            <Interactivity:Interaction.Behaviors>
+                <beh:BtnGetFocusBehavior />
+            </Interactivity:Interaction.Behaviors>
+        </Ellipse>
+    </Grid>
+
+

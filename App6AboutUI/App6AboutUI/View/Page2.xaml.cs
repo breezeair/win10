@@ -34,10 +34,10 @@ namespace App6AboutUI.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (rectangleItems.Items.Count > 0)
-            {
-                rectangleItems.Items.RemoveAt(0);
-            }
+            //if (rectangleItems.Items.Count > 0)
+            //{
+            //    rectangleItems.Items.RemoveAt(0);
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
