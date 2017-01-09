@@ -238,6 +238,15 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -2064,6 +2073,15 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -3805,6 +3823,15 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -5511,6 +5538,15 @@
         "type": "package",
         "native": {
           "runtimes/win10-x64/native/_._": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.0": {
@@ -7257,6 +7293,15 @@
           "System.Xml.XmlSerializer": "4.0.10"
         }
       },
+      "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        }
+      },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -8963,6 +9008,15 @@
         "type": "package",
         "native": {
           "runtimes/win10-x86/native/_._": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.0": {
@@ -10707,6 +10761,15 @@
           "System.ServiceModel.Security": "4.0.0",
           "System.Text.Encoding.CodePages": "4.0.0",
           "System.Xml.XmlSerializer": "4.0.10"
+        }
+      },
+      "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.0": {
@@ -12751,6 +12814,29 @@
         "runtimes/win81-x86/native/api-ms-win-core-sysinfo-l1-2-2.dll",
         "runtimes/win81-x86/native/api-ms-win-core-sysinfo-l1-2-3.dll",
         "runtimes/win81-x86/native/api-ms-win-security-cpwl-l1-1-0.dll"
+      ]
+    },
+    "Microsoft.Toolkit.Uwp.Notifications/1.2.0": {
+      "sha512": "YbCSSxNytBG+WWHsvyvnPupE2W2r4IiXogpy0HJ9yhF5qoC1SpgGnYR772fg25ny2fqG1q13NIy8ULYx8Y7zBg==",
+      "type": "package",
+      "files": [
+        "Microsoft.Toolkit.Uwp.Notifications.1.2.0.nupkg.sha512",
+        "Microsoft.Toolkit.Uwp.Notifications.nuspec",
+        "build/native/Microsoft.Toolkit.Uwp.Notifications.targets",
+        "lib/dotnet/Microsoft.Toolkit.Uwp.Notifications.dll",
+        "lib/dotnet/Microsoft.Toolkit.Uwp.Notifications.pdb",
+        "lib/dotnet/Microsoft.Toolkit.Uwp.Notifications.xml",
+        "lib/native/Microsoft.Toolkit.Uwp.Notifications.pdb",
+        "lib/native/Microsoft.Toolkit.Uwp.Notifications.pri",
+        "lib/native/Microsoft.Toolkit.Uwp.Notifications.winmd",
+        "lib/native/Microsoft.Toolkit.Uwp.Notifications.winmd.xml",
+        "lib/native/Microsoft.Toolkit.Uwp.Notifications.xml",
+        "lib/portable-net40+sl50+win+wpa81+wp80/Microsoft.Toolkit.Uwp.Notifications.dll",
+        "lib/portable-net40+sl50+win+wpa81+wp80/Microsoft.Toolkit.Uwp.Notifications.pdb",
+        "lib/portable-net40+sl50+win+wpa81+wp80/Microsoft.Toolkit.Uwp.Notifications.xml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.dll",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.pdb",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.Notifications.xml"
       ]
     },
     "Microsoft.VisualBasic/10.0.0": {
@@ -15497,7 +15583,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0"
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
+      "Microsoft.Toolkit.Uwp.Notifications >= 1.2.0"
     ],
     "UAP,Version=v10.0": []
   }

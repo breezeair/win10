@@ -1,20 +1,22 @@
-1.     Tasks:
+﻿1.     Tasks:
 
-·       Learing the knowledge about Files, folders, and libraries.
-·       Learing the knowledge about Launching, resuming, and background tasks.
+·       Learning the knowledge about Files, folders, and libraries.
+·       Learning the knowledge about Launching, resuming, and background tasks.
 
  
 2.     Learning Points:
 
-·      the knowledge about Files, folders, and libraries
-·      the usage of some controls
+·      the knowledge about App lifecycle
+·      Launch an app with a URI & Launch an app through file activation
+·      how to use app service
+·      how to add and display a splash screen
 
 
 
 3.     Questions:
 
-·      I write a EntranceThemeTransition for button. But it doesn't work. So as ItemsControl.  Finding the root cause.
-·      Is the location of LocalFolder can be customerized?
+·      How much memory does a UWP require when it's prelaunched.
+·      How to use the LocalSettings storage API to save simple application data synchronously ?
 
  
 4.     Arrangement next day
@@ -24,10 +26,9 @@
  
 5.     Problems summary, how to improve
 
-·      Up to now, I am also familiar with part of the controls and patterns. I only have a general knowledge of the others.
-·      I have browsed the knowledge points about Files, folders, and libraries. But lack of the experience in applying them in code.
-·      I have not grasped the knowlege about Inputs and devices Usability. 
-·      I have viewed the basics about animations, but also know little about Storyboarded animations,Key-frame and easing function animations.
+·      I have browsed the knowledge points about Launching, resuming, and background tasks. I only have a general knowledge of them, lack of the experience in applying.
+·      I have not grasped the knowlege about background events and Events for controlling your app's memory usage.
+·      I have viewed the basics about background tasks, but don't have a depth understand of them.
 
 
 
@@ -70,7 +71,7 @@ The following is the implementation code:
             }
         }
 
-2.If we want to add a customized behavior to a element, we can do like this:
+2.If we want to add a customized behavior to a element, wo can do it in Blend, or  do like this:
 1.add Behavior SDK to the reference.
 2.add a class which inherit DependencyObject, IBehavior:
 public sealed class BtnGetFocusBehavior : DependencyObject, IBehavior

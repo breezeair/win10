@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Microsoft.Xaml.Interactivity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +9,10 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
+
 namespace App6AboutUI
 {
-    public sealed class BtnGetFocusBehavior : Windows.UI.Xaml.DependencyObject, Microsoft.Xaml.Interactivity.IBehavior
+    public sealed class BtnGetFocusBehavior : DependencyObject, IBehavior
     {
         private DependencyObject _associatedObject;
         private readonly Storyboard _focuStoryboard = new Storyboard();
