@@ -1,0 +1,37 @@
+﻿1.     Tasks:
+
+·       Learning the knowledge about tile, notification and toast.
+·       Learning the knowledge about Launching, resuming, and background tasks.
+
+ 
+2.     Learning Points:
+
+·      Application.EnteredBackground event and Application.LeavingBackground event of App lifecycle
+·      how to customize tile, notification and toast
+·      how to use app service
+·      how to transfer data in the background
+
+
+
+3.     Questions:
+
+·      How to transfer bulk data files in the background?
+·      
+
+ 
+4.     Arrangement next day
+
+·      Learning the other knowledge about developing Windows apps.
+
+ 
+5.     Problems summary, how to improve
+
+·      I only have a general knowledge of App service and app lifecycle, lack of the experience in applying.
+·      I have not grasped all the knowlege about tile, notification and toast.
+·      I have viewed the basics about app service and background tasks, but don't have a depth understand of them.
+
+
+
+
+
+
