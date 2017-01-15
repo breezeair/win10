@@ -13,26 +13,37 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace App7
+namespace App6AboutUI.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class Page2 : Page
     {
-        public MainPage()
+
+        public Page2()
         {
             this.InitializeComponent();
         }
+        private void Rectangle_Tapped(object sender, PointerRoutedEventArgs e)
+        {
+            myStoryboard.Begin();
+        }
 
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            //if (rectangleItems.Items.Count > 0)
+            //{
+            //    rectangleItems.Items.RemoveAt(0);
+            //}
+        }
 
-
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(ListenerPage), true);
+            rootFrame.Navigate(typeof(View.FilePage), true);
         }
     }
 }

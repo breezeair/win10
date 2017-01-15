@@ -1,0 +1,39 @@
+﻿1.     Tasks
+
+·       Learning the knowledge about network and web service.
+·       Learning the knowledge about sqlite.
+
+ 
+2.     Learning Points
+
+·      How to add Sqlite SDK to my app.
+·      The conventional methods used in Sqlite.Net.
+·      Networking basics
+·      The suggestions on how to choose the technologies for a app
+·      Network communications in the background
+
+
+
+3.     Questions
+
+·      How to send and receive data on an ongoing basis between a device and a server through Websockets?
+·      What's the difference between Windows.Networking.Sockets and Winsock?
+
+ 
+4.     Arrangement next day
+
+·      Learning the knowledge about network and web service.
+·      Learning the knowledge about media.
+
+ 
+5.     Problems summary
+
+·      There are also a lot of knowledge points about networking and web services to be learnt.
+·      I missed some key knowledge points when learning background tasks, folders and then.
+·      I should be effective in arranging my notes for a deep memory and quick searching.
+
+
+
+
+
+
