@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Windows.ApplicationModel.Core;
 using Windows.Networking;
 using Windows.Networking.Connectivity;
@@ -12,7 +13,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace App6AboutUI.View
+namespace App9Networking.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -24,6 +25,8 @@ namespace App6AboutUI.View
         private static bool optedIn = false;
 
         private static string MessageRec = "";
+
+        private StreamSocket connectedSocket = null;
 
         public ScenarioServer()
         {
@@ -109,7 +112,12 @@ namespace App6AboutUI.View
             StreamSocketListenerConnectionReceivedEventArgs args)
         {
             DataReader reader = new DataReader(args.Socket.InputStream);
-            //tbMessageReceived.Text = "1";
+            if (connectedSocket != null)
+            {
+                connectedSocket.Dispose();
+                connectedSocket = null;
+            }
+            connectedSocket = args.Socket;
 
             try
             {
@@ -152,6 +160,24 @@ namespace App6AboutUI.View
                     NotifyType.ErrorMessage);
             }
         }
+
+        private async void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataWriter writer = new DataWriter(connectedSocket.OutputStream);
+                writer.WriteBytes(Encoding.UTF8.GetBytes(SendMessageTextBox.Text));
+                SendMessageTextBox.Text = "";
+                await writer.StoreAsync();
+                writer.DetachStream();
+                writer.Dispose();
+            }
+            catch (Exception exception)
+            {
+                rootPage.NotifyUser(exception.Message, NotifyType.ErrorMessage);
+            }
+        }
+
 
         private void NotifyUserFromAsyncThread(string strMessage, NotifyType type)
         {

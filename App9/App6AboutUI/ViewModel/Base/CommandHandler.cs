@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace App6AboutUI.ViewModel.Base
+namespace App9Networking.ViewModel.Base
 {
     class CommandHandler : ICommand
     {

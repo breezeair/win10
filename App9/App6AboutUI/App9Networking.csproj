@@ -128,6 +128,9 @@
     <Compile Include="View\SocketActivityTriggerPage.xaml.cs">
       <DependentUpon>SocketActivityTriggerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WebSocketsPage.xaml.cs">
+      <DependentUpon>WebSocketsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -193,6 +196,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\WebSocketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -201,6 +208,12 @@
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App9BackgroundTask\App9BackgroundTask.csproj">
+      <Project>{69717305-8575-47b3-a52d-52b4b8db16b5}</Project>
+      <Name>App9BackgroundTask</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

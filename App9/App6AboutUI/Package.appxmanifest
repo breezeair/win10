@@ -3,7 +3,7 @@
   <Identity Name="0195d431-b46e-4b4c-ba4b-349a2dd234fc" Publisher="CN=yk" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="0195d431-b46e-4b4c-ba4b-349a2dd234fc" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>App6AboutUI</DisplayName>
+    <DisplayName>App9Networking</DisplayName>
     <PublisherDisplayName>yk</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -14,12 +14,24 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="App6AboutUI.App">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="App9Networking.App">
       <uap:VisualElements DisplayName="Networking9" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Networking and WebService" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="app9">
+            <uap:DisplayName>App9NetWorking</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="App9BackgroundTask.BackgroundTask1">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>

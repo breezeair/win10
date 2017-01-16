@@ -25,7 +25,7 @@ using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace App6AboutUI.View
+namespace App9Networking.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -43,6 +43,7 @@ namespace App6AboutUI.View
             new Scenario() { Title="HttpClientPage", ClassType=typeof(HttpClientPage)},
             new Scenario() { Title="BackgroundTransfer", ClassType=typeof(ScenarioBackgroundTransfer)},
             new Scenario() { Title="SocketActivityTrigger", ClassType=typeof(SocketActivityTriggerPage)},
+            new Scenario() { Title="WebSockets", ClassType=typeof(WebSocketsPage)},
 
         };
         //set up in configuration cs.

@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
 
-namespace App6AboutUI
+namespace App9Networking
 {
     public sealed class BtnGetFocusBehavior : DependencyObject, IBehavior
     {

@@ -20,30 +20,11 @@ namespace App9Networking.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page2 : Page
+    public sealed partial class WebSocketsPage : Page
     {
-
-        public Page2()
+        public WebSocketsPage()
         {
             this.InitializeComponent();
-        }
-        private void Rectangle_Tapped(object sender, PointerRoutedEventArgs e)
-        {
-            myStoryboard.Begin();
-        }
-
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            //if (rectangleItems.Items.Count > 0)
-            //{
-            //    rectangleItems.Items.RemoveAt(0);
-            //}
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(View.FilePage), true);
         }
     }
 }

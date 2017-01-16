@@ -9,7 +9,7 @@ using Windows.Web.Http;
 using Windows.Web.Http.Filters;
 using Windows.Web.Http.Headers;
 
-namespace App6AboutUI
+namespace App9Networking
 {
     internal static class Helpers
     {

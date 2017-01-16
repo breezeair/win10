@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -16,7 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace App6AboutUI
+namespace App9Networking
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -87,6 +88,20 @@ namespace App6AboutUI
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : Windows.UI.Core.AppViewBackButtonVisibility.Collapsed;
             rootFrame.Navigated += OnNavigated;
         }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+
+            var toastNotifier = ToastNotificationManager.CreateToastNotifier();
+            var toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText02);
+            var textNodes = toastXml.GetElementsByTagName("text");
+            textNodes.First().AppendChild(toastXml.CreateTextNode("2222222222"));
+            var toastNotification = new ToastNotification(toastXml);
+            toastNotifier.Show(new ToastNotification(toastXml));
+            OnLaunched((LaunchActivatedEventArgs)args);
+        }
+
+
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails

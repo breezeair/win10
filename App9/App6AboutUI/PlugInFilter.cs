@@ -4,7 +4,7 @@ using Windows.Foundation;
 using Windows.Web.Http;
 using Windows.Web.Http.Filters;
 
-namespace App6AboutUI
+namespace App9Networking
 {
     public class PlugInFilter : IHttpFilter
     {

@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="App6AboutUI.View.ScenarioServer"
+    x:Class="App9Networking.View.ScenarioServer"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:App6AboutUI.View"
+    xmlns:local="using:App9Networking.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -13,6 +13,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
             </Grid.RowDefinitions>
             <StackPanel Margin="20" Grid.Row="0">
                 <TextBlock Text="Listener:" Style="{StaticResource SampleHeaderTextStyle}"/>
@@ -27,6 +29,19 @@
                 <TextBlock Style="{StaticResource BasicTextStyle}" >The message received from Client:</TextBlock>
                 <TextBlock x:Name="tbMessageReceived" Style="{StaticResource BasicTextStyle}" Text="none"></TextBlock>
 
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Margin="20" Orientation="Vertical">
+                <TextBlock Style="{StaticResource BasicTextStyle}" >Send message to Client:</TextBlock>
+                <TextBox
+                    x:Name="SendMessageTextBox"
+                    Margin="5"
+                    TextWrapping="Wrap" />
+                <Button
+                    x:Name="SendButton"
+                    Margin="5"
+                    Click="SendButton_Click"
+                    Content="Send" />
             </StackPanel>
 
 
