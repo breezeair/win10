@@ -5,6 +5,7 @@ using Windows.ApplicationModel.Core;
 using Windows.Networking;
 using Windows.Networking.Connectivity;
 using Windows.Networking.Sockets;
+using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -21,7 +22,7 @@ namespace App9Networking.View
     public sealed partial class ScenarioServer : Page
     {
         private Page1 rootPage;
-
+        
         private static bool optedIn = false;
 
         private static string MessageRec = "";
@@ -50,15 +51,15 @@ namespace App9Networking.View
             // clicked the button) so we block it here.
             if (CoreApplication.Properties.ContainsKey("listener"))
             {
-                rootPage.NotifyUser(
+                rootPage.StatusMessage(
                     "This step has already been executed. Please move to the next one.",
-                    NotifyType.ErrorMessage);
+                    Notification.ReadMessage);
                 return;
             }
 
             if (String.IsNullOrEmpty(ServiceNameForListener.Text))
             {
-                rootPage.NotifyUser("Please provide a service name.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Please provide a service name.", Notification.ReadMessage);
                 return;
             }
 
@@ -83,7 +84,7 @@ namespace App9Networking.View
             try
             {
                     await listener.BindServiceNameAsync(ServiceNameForListener.Text);
-                    rootPage.NotifyUser("Listening", NotifyType.StatusMessage);
+                    rootPage.StatusMessage("Listening", Notification.StatusMessage);
                 
             }
             catch (Exception exception)
@@ -96,9 +97,9 @@ namespace App9Networking.View
                     throw;
                 }
 
-                rootPage.NotifyUser(
+                rootPage.StatusMessage(
                     "Start listening failed with error: " + exception.Message,
-                    NotifyType.ErrorMessage);
+                    Notification.ReadMessage);
             }
         }
 
@@ -141,9 +142,9 @@ namespace App9Networking.View
                     }
                     // Display the string on the screen. The event is invoked on a non-UI thread, so we need to marshal
                     // the text back to the UI thread.
-                    NotifyUserFromAsyncThread(
+                    StatusMessageFromAsyncThread(
                         String.Format("Received Message: \"{0}\"", reader.ReadString(actualStringLength)),
-                        NotifyType.StatusMessage);
+                        Notification.StatusMessage);
                 }
 
             }
@@ -155,11 +156,13 @@ namespace App9Networking.View
                     throw;
                 }
 
-                NotifyUserFromAsyncThread(
+                StatusMessageFromAsyncThread(
                     "Read stream failed with error: " + exception.Message,
-                    NotifyType.ErrorMessage);
+                    Notification.ReadMessage);
             }
         }
+
+
 
         private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
@@ -174,16 +177,16 @@ namespace App9Networking.View
             }
             catch (Exception exception)
             {
-                rootPage.NotifyUser(exception.Message, NotifyType.ErrorMessage);
+                rootPage.StatusMessage(exception.Message, Notification.ReadMessage);
             }
         }
 
 
-        private void NotifyUserFromAsyncThread(string strMessage, NotifyType type)
+        private void StatusMessageFromAsyncThread(string strMessage, Notification type)
         {
             var ignore = Dispatcher.RunAsync(
                  CoreDispatcherPriority.Normal, () =>
-                 rootPage.NotifyUser(strMessage, type));
+                 rootPage.StatusMessage(strMessage, type));
 
             //tbMessageReceived.Text = strMessage;
             var ignore2 = Dispatcher.RunAsync(
@@ -236,10 +239,8 @@ namespace App9Networking.View
             }
 
             CoreApplication.Properties.Remove("connected");
-            CoreApplication.Properties.Remove("adapter");
-            CoreApplication.Properties.Remove("serverAddress");
 
-            rootPage.NotifyUser("Socket and listener closed", NotifyType.StatusMessage);
+            rootPage.StatusMessage("Socket and listener closed", Notification.StatusMessage);
         }
     }
 }

@@ -20,7 +20,8 @@
                 <TextBox x:Name="HostNameForConnect" IsEnabled="True" Text="localhost"/>
                 <TextBlock TextWrapping="Wrap" Style="{StaticResource BasicTextStyle}">Service name:</TextBlock>
                 <TextBox x:Name="ServiceNameForConnect" Text="20000"/>
-                <Button x:Name="ConnectSocket" Content="Connect" Click="ConnectSocket_Click"/>
+                <Button x:Name="ConnectSocket" Content="connect" Click="ConnectSocket_Click"/>
+                <Button x:Name="DisConnectSocket" Content="disconnect" Click="DisConnect_Click" />
 
             </StackPanel>
             <StackPanel Margin="20" Grid.Row="1">
@@ -28,7 +29,7 @@
                     Send the text in the TextBox:
                 </TextBlock>
                 <TextBox x:Name="tbForSending"></TextBox>
-                <Button x:Name="SendHello" Content="Send text" Click="SendHello_Click"/>
+                <Button x:Name="SendText" Content="Send text" Click="SendText_Click"/>
                 <TextBlock x:Name="SendOutput" TextWrapping="Wrap" Style="{StaticResource BasicTextStyle}"/>
             </StackPanel>
 

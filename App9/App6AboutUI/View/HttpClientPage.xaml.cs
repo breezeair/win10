@@ -11,7 +11,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace App9Networking.View
 {
@@ -43,12 +42,12 @@ namespace App9Networking.View
             // valid, absolute URI, we'll notify the user about the incorrect input.
             if (!Helpers.TryGetUri(AddressField.Text, out resourceAddress))
             {
-                rootPage.NotifyUser("Invalid URI.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Invalid URI.", Notification.ReadMessage);
                 return;
             }
 
             Helpers.ScenarioStarted(StartButton, CancelButton, OutputField);
-            rootPage.NotifyUser("In progress", NotifyType.StatusMessage);
+            rootPage.StatusMessage("In progress", Notification.StatusMessage);
 
             try
             {
@@ -84,15 +83,15 @@ namespace App9Networking.View
                 }
                 OutputField.Text += responseBody.ToString();
 
-                rootPage.NotifyUser("Completed", NotifyType.StatusMessage);
+                rootPage.StatusMessage("Completed", Notification.StatusMessage);
             }
             catch (TaskCanceledException)
             {
-                rootPage.NotifyUser("Request canceled.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Request canceled.", Notification.ReadMessage);
             }
             catch (Exception ex)
             {
-                rootPage.NotifyUser("Error: " + ex.Message, NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Error: " + ex.Message, Notification.ReadMessage);
             }
             finally
             {

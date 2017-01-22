@@ -21,7 +21,7 @@ namespace App9Networking.View
     public sealed partial class ScenarioBackgroundTransfer : Page, IDisposable
     {
         // A pointer back to the main page.  This is needed if you want to call methods in MainPage such
-        // as NotifyUser()
+        // as StatusMessage()
         private Page1 rootPage = Page1.Current;
 
         private List<DownloadOperation> activeDownloads;
@@ -112,7 +112,7 @@ namespace App9Networking.View
             Uri source;
             if (!Uri.TryCreate(serverAddressField.Text.Trim(), UriKind.Absolute, out source))
             {
-                rootPage.NotifyUser("Invalid URI.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Invalid URI.", Notification.ReadMessage);
                 return;
             }
 
@@ -120,7 +120,7 @@ namespace App9Networking.View
 
             if (string.IsNullOrWhiteSpace(destination))
             {
-                rootPage.NotifyUser("A local file name is required.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("A local file name is required.", Notification.ReadMessage);
                 return;
             }
 
@@ -133,7 +133,7 @@ namespace App9Networking.View
             }
             catch (FileNotFoundException ex)
             {
-                rootPage.NotifyUser("Error while creating file: " + ex.Message, NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Error while creating file: " + ex.Message, Notification.ReadMessage);
                 return;
             }
 
@@ -266,7 +266,7 @@ namespace App9Networking.View
         {
             try
             {
-                LogStatus("Running: " + download.Guid, NotifyType.StatusMessage);
+                LogStatus("Running: " + download.Guid, Notification.StatusMessage);
 
                 // Store the download so we can pause/resume.
                 activeDownloads.Add(download);
@@ -294,11 +294,11 @@ namespace App9Networking.View
                         "Completed: {0}, Status Code: {1}",
                         download.Guid,
                         statusCode),
-                    NotifyType.StatusMessage);
+                    Notification.StatusMessage);
             }
             catch (TaskCanceledException)
             {
-                LogStatus("Canceled: " + download.Guid, NotifyType.StatusMessage);
+                LogStatus("Canceled: " + download.Guid, Notification.StatusMessage);
             }
             catch (Exception ex)
             {
@@ -324,12 +324,12 @@ namespace App9Networking.View
             if (download == null)
             {
                 LogStatus(String.Format(CultureInfo.CurrentCulture, "Error: {0}: {1}", title, error),
-                    NotifyType.ErrorMessage);
+                    Notification.ReadMessage);
             }
             else
             {
                 LogStatus(String.Format(CultureInfo.CurrentCulture, "Error: {0} - {1}: {2}", download.Guid, title,
-                    error), NotifyType.ErrorMessage);
+                    error), Notification.ReadMessage);
             }
 
             return true;
@@ -349,9 +349,9 @@ namespace App9Networking.View
             outputField.Text += message + "\r\n";
         }
 
-        private void LogStatus(string message, NotifyType type)
+        private void LogStatus(string message, Notification type)
         {
-            rootPage.NotifyUser(message, type);
+            rootPage.StatusMessage(message, type);
             Log(message);
         }
     }

@@ -22,20 +22,47 @@
     </Page.Resources>
 
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="87,76,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="87,140,0,0" TextWrapping="Wrap" Text="TextBlock1" VerticalAlignment="Top"/>
-        <Button x:Name="button2" Content="Button2" HorizontalAlignment="Left" Margin="87,221,0,0" VerticalAlignment="Top" Click="button2_Click"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="87,308,0,0" TextWrapping="Wrap" Text="TextBlock2" VerticalAlignment="Top"/>
-        <StackPanel x:Name="stackPanel1" HorizontalAlignment="Left" Height="100" Margin="87,372,0,0" VerticalAlignment="Top" Width="100"/>
-        <!-- Animates the rectangle's opacity. -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <StackPanel Margin="5" Grid.Row="0">
+            <TextBlock Style="{StaticResource BasicTextStyle}" VerticalAlignment="Bottom">File Server Port:</TextBlock>
+            <TextBox x:Name="PortForListener" Text="20001"/>
+            <TextBlock Style="{StaticResource BasicTextStyle}" VerticalAlignment="Bottom">File:</TextBlock>
+            <TextBox x:Name="FileName" Text="000.jpg"/>
+            <Grid Margin="5">
+                <Button x:Name="ReceivingFile" Content="ReceivingFile" Margin="20,0,0,0" Click="StartFileListener_Click"/>
+                <Button x:Name="StopReceving" Content="StopReceving" Margin="200,0,0,0" Click="CloseFileListener_Click" IsEnabled="False"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Margin="5" Grid.Row="1">
+            <TextBlock Style="{StaticResource BasicTextStyle}" VerticalAlignment="Bottom">File Client Port:</TextBlock>
+            <TextBox x:Name="PortForSend" Text="20001"/>
+            <TextBlock Style="{StaticResource BasicTextStyle}" VerticalAlignment="Bottom">File Path:</TextBlock>
+            <TextBox x:Name="FileUri2" Text="fileuri"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnSend" Content="Send"  Click="SendFile_Click" Grid.Column="2" IsEnabled="False"></Button>
+                <Button x:Name="btnPick" Content="Pickfile" Grid.Column="1" Click="Pickfile_Click"></Button>
+                <Button x:Name="btnConnect" Content="Connect" Grid.Column="0" Click="btnConnect_Click" ></Button>
+                <Button x:Name="btnDisConnect" Content="DisConnect" Grid.Column="3" Click="btnDisConnect_Click"/>
+
+            </Grid>
+
+        </StackPanel>
 
 
-        <Rectangle x:Name="MyAnimatedRectangle"
-      Width="300" Height="200" Fill="Blue" >
-            <Interactivity:Interaction.Behaviors>
-                <local:BtnGetFocusBehavior/>
-            </Interactivity:Interaction.Behaviors>
-        </Rectangle>
+
     </Grid>
 </Page>

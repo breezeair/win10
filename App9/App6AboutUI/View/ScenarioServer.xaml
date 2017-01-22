@@ -14,24 +14,30 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
 
             </Grid.RowDefinitions>
-            <StackPanel Margin="20" Grid.Row="0">
+            <StackPanel Margin="5" Grid.Row="0">
                 <TextBlock Text="Listener:" Style="{StaticResource SampleHeaderTextStyle}"/>
             </StackPanel>
-            <StackPanel Margin="20" Grid.Row="1">
+            <StackPanel Margin="5" Grid.Row="1">
                 <TextBlock Style="{StaticResource BasicTextStyle}" VerticalAlignment="Bottom">Service Port:</TextBlock>
                 <TextBox x:Name="ServiceNameForListener" Text="20000"/>
-                <Button x:Name="StartListener" Content="Open Listener" Click="StartListener_Click"/>
-                <Button x:Name="CloseSockets" Content="Close" Click="CloseSockets_Click"/>
+                <Grid Margin="5">
+                    <Button x:Name="StartListener" Content="Open Listener" Margin="20,0,0,0" Click="StartListener_Click"/>
+                    <Button x:Name="CloseSockets" Content="Close" Margin="200,0,0,0" Click="CloseSockets_Click"/>
+                </Grid>
+                <StackPanel>
+                    
+                </StackPanel>
             </StackPanel>
-            <StackPanel Margin="20" Grid.Row="2">
+            <StackPanel Margin="5" Grid.Row="2">
                 <TextBlock Style="{StaticResource BasicTextStyle}" >The message received from Client:</TextBlock>
-                <TextBlock x:Name="tbMessageReceived" Style="{StaticResource BasicTextStyle}" Text="none"></TextBlock>
+                <TextBlock x:Name="tbMessageReceived" Style="{StaticResource BasicTextStyle}" Height="150" Text="none"></TextBlock>
 
             </StackPanel>
 
-            <StackPanel Grid.Row="4" Margin="20" Orientation="Vertical">
+            <StackPanel Grid.Row="3" Margin="5" Orientation="Vertical">
                 <TextBlock Style="{StaticResource BasicTextStyle}" >Send message to Client:</TextBlock>
                 <TextBox
                     x:Name="SendMessageTextBox"
@@ -43,6 +49,7 @@
                     Click="SendButton_Click"
                     Content="Send" />
             </StackPanel>
+
 
 
         </Grid>

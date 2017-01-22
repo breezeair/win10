@@ -44,6 +44,7 @@ namespace App9Networking.View
             new Scenario() { Title="BackgroundTransfer", ClassType=typeof(ScenarioBackgroundTransfer)},
             new Scenario() { Title="SocketActivityTrigger", ClassType=typeof(SocketActivityTriggerPage)},
             new Scenario() { Title="WebSockets", ClassType=typeof(WebSocketsPage)},
+            new Scenario() { Title="FilePage", ClassType=typeof(FilePage)},
 
         };
         //set up in configuration cs.
@@ -121,11 +122,11 @@ namespace App9Networking.View
             Scenario s = scenarioListBox.SelectedItem as Scenario;
             if(scenarioListBox.SelectedIndex == 0)
             {
-                NotifyUser("Server", NotifyType.NoneMessage);
+                StatusMessage("Server", Notification.NoneMessage);
             }
             else
             {
-                NotifyUser("Client", NotifyType.NoneMessage);
+                StatusMessage("Client", Notification.NoneMessage);
             }
             if (s != null)
             {
@@ -137,17 +138,17 @@ namespace App9Networking.View
             }
         }
 
-        public void NotifyUser(string strMessage, NotifyType type)
+        public void StatusMessage(string strMessage, Notification type)
         {
             switch (type)
             {
-                case NotifyType.StatusMessage:
-                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Green);
+                case Notification.StatusMessage:
+                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.LawnGreen);
                     break;
-                case NotifyType.ErrorMessage:
-                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Red);
+                case Notification.ReadMessage:
+                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.OrangeRed);
                     break;
-                case NotifyType.NoneMessage:
+                case Notification.NoneMessage:
                     StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Gray);
                     break;
             }
@@ -173,10 +174,10 @@ namespace App9Networking.View
         }
     }
 
-    public enum NotifyType
+    public enum Notification
     {
         StatusMessage,
-        ErrorMessage,
+        ReadMessage,
         NoneMessage
     };
 

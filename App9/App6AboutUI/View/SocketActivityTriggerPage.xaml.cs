@@ -18,7 +18,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace App9Networking.View
 {
@@ -55,12 +54,7 @@ namespace App9Networking.View
                 // If there is no task allready created, create a new one
                 if (task == null)
                 {
-                    var socketTaskBuilder = new BackgroundTaskBuilder();
-                    socketTaskBuilder.Name = "BackgroundTaskBuilder1";
-                    socketTaskBuilder.TaskEntryPoint = "App9BackgroundTask.BackgroundTask1";
-                    var trigger = new SocketActivityTrigger();
-                    socketTaskBuilder.SetTrigger(trigger);
-                    task = socketTaskBuilder.Register();
+                    
                 }
 
                 SocketActivityInformation socketInformation;
@@ -71,20 +65,28 @@ namespace App9Networking.View
                     socket = socketInformation.StreamSocket;
                     socket.TransferOwnership(socketId);
                     socket = null;
-                    rootPage.NotifyUser("Connected. You may close the application", NotifyType.StatusMessage);
+                    rootPage.StatusMessage("Connected. You may close the application", Notification.StatusMessage);
                     TargetServerTextBox.IsEnabled = false;
                     ConnectButton.IsEnabled = false;
+                    Unregister.IsEnabled = true;
                 }
 
             }
             catch (Exception exception)
             {
-                rootPage.NotifyUser(exception.Message, NotifyType.ErrorMessage);
+                rootPage.StatusMessage(exception.Message, Notification.ReadMessage);
             }
         }
 
         private async void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
+            var socketTaskBuilder = new BackgroundTaskBuilder();
+            socketTaskBuilder.Name = "BackgroundTaskBuilder1";
+            socketTaskBuilder.TaskEntryPoint = "App9BackgroundTask.BackgroundTask1";
+            var trigger = new SocketActivityTrigger();
+            socketTaskBuilder.SetTrigger(trigger);
+            task = socketTaskBuilder.Register();
+
             ApplicationData.Current.LocalSettings.Values["hostname"] = TargetServerTextBox.Text;
             ApplicationData.Current.LocalSettings.Values["port"] = port;
 
@@ -111,11 +113,11 @@ namespace App9Networking.View
                     socket = null;
                 }
                 ConnectButton.IsEnabled = false;
-                rootPage.NotifyUser("Connected. You may close the application", NotifyType.StatusMessage);
+                rootPage.StatusMessage("Connected. You may close the application", Notification.StatusMessage);
             }
             catch (Exception exception)
             {
-                rootPage.NotifyUser(exception.Message, NotifyType.ErrorMessage);
+                rootPage.StatusMessage(exception.Message, Notification.ReadMessage);
             }
         }
 
@@ -126,6 +128,7 @@ namespace App9Networking.View
                 if (cur.Value.Name == "BackgroundTaskBuilder1")
                 {
                     cur.Value.Unregister(true);
+                    ConnectButton.IsEnabled = true;
                 }
             }
 

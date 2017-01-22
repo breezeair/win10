@@ -23,6 +23,10 @@ namespace App9Networking.View
         Page1 rootPage = Page1.Current;
         public const string logoSecondaryTileId = "SecondaryTile.Logo";
 
+        private const int bytesPerRow = 16;
+        private const int bytesPerSegment = 2;
+        private const uint chunkSize = 4096;
+
         // Limit traffic to the same adapter that the listener is using to demonstrate client adapter-binding.
         NetworkAdapter adapter = null;
         public ScenarioClient()
@@ -63,15 +67,15 @@ namespace App9Networking.View
         {
             if (CoreApplication.Properties.ContainsKey("clientSocket"))
             {
-                rootPage.NotifyUser(
+                rootPage.StatusMessage(
                     "This step has already been executed. Please move to the next one.",
-                    NotifyType.ErrorMessage);
+                    Notification.ReadMessage);
                 return;
             }
 
             if (String.IsNullOrEmpty(ServiceNameForConnect.Text))
             {
-                rootPage.NotifyUser("Please provide a service name.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Please provide a service name.", Notification.ReadMessage);
                 return;
             }
 
@@ -86,7 +90,7 @@ namespace App9Networking.View
             }
             catch (ArgumentException)
             {
-                rootPage.NotifyUser("Error: Invalid host name.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Error: Invalid host name.", Notification.ReadMessage);
                 return;
             }
 
@@ -100,20 +104,16 @@ namespace App9Networking.View
             CoreApplication.Properties.Add("clientSocket", socket);
             try
             {
-                if (adapter == null)
-                {
-                    rootPage.NotifyUser("Connecting to: " + HostNameForConnect.Text, NotifyType.StatusMessage);
-
+                    rootPage.StatusMessage("Connecting to: " + HostNameForConnect.Text, Notification.StatusMessage);
                     // Connect to the server (by default, the listener we created in the previous step).
                     await socket.ConnectAsync(hostName, ServiceNameForConnect.Text);
-
-                    rootPage.NotifyUser("Connected", NotifyType.StatusMessage);
-                }
-                
-
+                    rootPage.StatusMessage("Connected", Notification.StatusMessage);
                 // Mark the socket as connected. Set the value to null, as we care only about the fact that the 
                 // property is set.
                 CoreApplication.Properties.Add("connected", null);
+                SendText.IsEnabled = true;
+                DisConnectSocket.IsEnabled = true;
+                ConnectSocket.IsEnabled = false;
             }
             catch (Exception exception)
             {
@@ -123,15 +123,15 @@ namespace App9Networking.View
                     throw;
                 }
 
-                rootPage.NotifyUser("Connect failed with error: " + exception.Message, NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Connect failed with error: " + exception.Message, Notification.ReadMessage);
             }
         }
 
-        private async void SendHello_Click(object sender, RoutedEventArgs e)
+        private async void SendText_Click(object sender, RoutedEventArgs e)
         {
             if (!CoreApplication.Properties.ContainsKey("connected"))
             {
-                rootPage.NotifyUser("Please run previous steps before doing this one.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Please run previous steps before doing this one.", Notification.ReadMessage);
                 return;
             }
 
@@ -139,7 +139,7 @@ namespace App9Networking.View
             StreamSocket socket;
             if (!CoreApplication.Properties.TryGetValue("clientSocket", out outValue))
             {
-                rootPage.NotifyUser("Please run previous steps before doing this one.", NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Please run previous steps before doing this one.", Notification.ReadMessage);
                 return;
             }
 
@@ -181,9 +181,57 @@ namespace App9Networking.View
                     throw;
                 }
 
-                rootPage.NotifyUser("Send failed with error: " + exception.Message, NotifyType.ErrorMessage);
+                rootPage.StatusMessage("Send failed with error: " + exception.Message, Notification.ReadMessage);
             }
         }
+
+        private async void HexDump(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Retrieve the uri of the image and use that to load the file.
+                Uri uri = new Uri("ms-appx:///assets/22.png");
+                var file = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
+                //DataReader reader = new DataReader(args.Socket.InputStream);
+                using (var inputStream = await file.OpenSequentialReadAsync())
+                {
+                    // Pass the input stream to the DataReader.
+                    var dataReader = new Windows.Storage.Streams.DataReader(inputStream) ;                 
+                        uint numBytes;
+                        //var bytes = new byte[chunkSize];
+                        numBytes = await dataReader.LoadAsync(chunkSize);
+                    //numBytes = await dataReader.LoadAsync(sizeof(byte));
+                    //dataReader.ReadBytes(bytes);
+                    //var buffer = dataReader.ReadBytes(chunkSize);
+                    //dataReader.ReadBuffer(inputStream);
+
+
+
+
+                    
+                }
+            
+            object outValue;
+            StreamSocket connectedSocket;
+            if (!CoreApplication.Properties.TryGetValue("clientSocket", out outValue))
+            {
+                rootPage.StatusMessage("Please run previous steps before doing this one.", Notification.ReadMessage);
+                return;
+            }
+            connectedSocket = (StreamSocket)outValue;
+
+            DataWriter writer = new DataWriter(connectedSocket.OutputStream);
+            writer.WriteBytes(System.Text.Encoding.UTF8.GetBytes("SSSSSS"));
+            await writer.StoreAsync();
+            writer.DetachStream();
+            writer.Dispose();
+            }
+            catch (Exception ex)
+            {
+                //ReadBytesOutput.Text = ex.Message;
+            }
+        }
+
 
         public static Rect GetElementRect(FrameworkElement element)
         {
@@ -253,11 +301,11 @@ namespace App9Networking.View
 
                     if (isPinned)
                     {
-                        rootPage.NotifyUser("Secondary tile successfully pinned.", NotifyType.StatusMessage);
+                        rootPage.StatusMessage("Secondary tile successfully pinned.", Notification.StatusMessage);
                     }
                     else
                     {
-                        rootPage.NotifyUser("Secondary tile not pinned.", NotifyType.ErrorMessage);
+                        rootPage.StatusMessage("Secondary tile not pinned.", Notification.ReadMessage);
                     }
                 }
                 if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent(("Windows.Phone.UI.Input.HardwareButtons")))
@@ -269,6 +317,31 @@ namespace App9Networking.View
                     await secondaryTile.RequestCreateAsync();
                 }
             }
+        }
+
+        private void DisConnect_Click(object sender, RoutedEventArgs e)
+        {
+            object outValue;
+            StreamSocket socket;
+            if (!CoreApplication.Properties.TryGetValue("clientSocket", out outValue))
+            {
+                rootPage.StatusMessage("Please connect first.", Notification.ReadMessage);
+                return;
+            }else
+            {
+                rootPage.StatusMessage("Yes.",Notification.ReadMessage);
+                socket = (StreamSocket)outValue;
+                socket.Dispose();
+                CoreApplication.Properties.Remove("clientSocket");
+                CoreApplication.Properties.Remove("connected");
+                CoreApplication.Properties.Remove("clientDataWriter");
+
+                SendText.IsEnabled = false;
+                DisConnectSocket.IsEnabled = false;
+                ConnectSocket.IsEnabled = true;
+            }
+
+
         }
     }
 }
