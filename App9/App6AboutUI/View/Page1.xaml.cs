@@ -43,7 +43,7 @@ namespace App9Networking.View
             new Scenario() { Title="HttpClientPage", ClassType=typeof(HttpClientPage)},
             new Scenario() { Title="BackgroundTransfer", ClassType=typeof(ScenarioBackgroundTransfer)},
             new Scenario() { Title="SocketActivityTrigger", ClassType=typeof(SocketActivityTriggerPage)},
-            new Scenario() { Title="WebSockets", ClassType=typeof(WebSocketsPage)},
+            //new Scenario() { Title="WebSockets", ClassType=typeof(WebSocketsPage)},
             new Scenario() { Title="FilePage", ClassType=typeof(FilePage)},
 
         };
@@ -78,17 +78,7 @@ namespace App9Networking.View
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
 
         }
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            ContentDialog noWifiDialog = new ContentDialog()
-            {
-                Title = "No wifi connection",
-                Content = "Check connection and try again",
-                PrimaryButtonText = "Ok"
-            };
-
-            ContentDialogResult result = await noWifiDialog.ShowAsync();
-        }*/
+        */
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // Populate the scenario list from the SampleConfiguration.cs file

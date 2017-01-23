@@ -12,7 +12,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace App9Networking.View
 {
@@ -46,9 +45,7 @@ namespace App9Networking.View
 
         private async void StartListener_Click(object sender, RoutedEventArgs e)
         {
-            // Overriding the listener here is safe as it will be deleted once all references to it are gone.
-            // However, in many cases this is a dangerous pattern to override data semi-randomly (each time user
-            // clicked the button) so we block it here.
+
             if (CoreApplication.Properties.ContainsKey("listener"))
             {
                 rootPage.StatusMessage(
@@ -70,14 +67,9 @@ namespace App9Networking.View
 
             StreamSocketListener listener = new StreamSocketListener();
             listener.ConnectionReceived += OnConnection;
-
-            // If necessary, tweak the listener's control options before carrying out the bind operation.
-            // These options will be automatically applied to the connected StreamSockets resulting from
-            // incoming connections (i.e., those passed as arguments to the ConnectionReceived event handler).
-            // Refer to the StreamSocketListenerControl class' MSDN documentation for the full list of control options.
             listener.Control.KeepAlive = false;
 
-            // Save the socket, so subsequent steps can use it.
+            // Save the socket for subsequent steps.
             CoreApplication.Properties.Add("listener", listener);
 
             // Start listen operation.
@@ -205,13 +197,10 @@ namespace App9Networking.View
             object outValue;
             if (CoreApplication.Properties.TryGetValue("clientDataWriter", out outValue))
             {
-                // Remove the data writer from the list of application properties as we are about to close it.
+                // Remove the data writer from the list of application properties
                 CoreApplication.Properties.Remove("clientDataWriter");
                 DataWriter dataWriter = (DataWriter)outValue;
 
-                // To reuse the socket with another data writer, the application must detach the stream from the
-                // current writer before disposing it. This is added for completeness, as this sample closes the socket
-                // in the very next block.
                 dataWriter.DetachStream();
                 dataWriter.Dispose();
             }
@@ -221,9 +210,6 @@ namespace App9Networking.View
                 // Remove the socket from the list of application properties as we are about to close it.
                 CoreApplication.Properties.Remove("clientSocket");
                 StreamSocket socket = (StreamSocket)outValue;
-
-                // StreamSocket.Close() is exposed through the Dispose() method in C#.
-                // The call below explicitly closes the socket.
                 socket.Dispose();
             }
 
@@ -233,8 +219,7 @@ namespace App9Networking.View
                 CoreApplication.Properties.Remove("listener");
                 StreamSocketListener listener = (StreamSocketListener)outValue;
 
-                // StreamSocketListener.Close() is exposed through the Dispose() method in C#.
-                // The call below explicitly closes the socket.
+
                 listener.Dispose();
             }
 

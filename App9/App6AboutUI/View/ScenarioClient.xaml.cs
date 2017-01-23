@@ -11,7 +11,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace App9Networking.View
 {
@@ -79,10 +78,6 @@ namespace App9Networking.View
                 return;
             }
 
-            // By default 'HostNameForConnect' is disabled and host name validation is not required. When enabling the
-            // text box validating the host name is required since it was received from an untrusted source
-            // (user input). The host name is validated by catching ArgumentExceptions thrown by the HostName
-            // constructor for invalid input.
             HostName hostName;
             try
             {
@@ -96,8 +91,6 @@ namespace App9Networking.View
 
             StreamSocket socket = new StreamSocket();
 
-            // If necessary, tweak the socket's control options before carrying out the connect operation.
-            // Refer to the StreamSocketControl class' MSDN documentation for the full list of control options.
             socket.Control.KeepAlive = false;
 
             // Save the socket, so subsequent steps can use it.
@@ -120,7 +113,7 @@ namespace App9Networking.View
                 // If this is an unknown status it means that the error is fatal and retry will likely fail.
                 if (SocketError.GetStatus(exception.HResult) == SocketErrorStatus.Unknown)
                 {
-                    throw;
+                    //throw;
                 }
 
                 rootPage.StatusMessage("Connect failed with error: " + exception.Message, Notification.ReadMessage);
